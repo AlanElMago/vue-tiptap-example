@@ -1,0 +1,42 @@
+name: vue-tiptap-example
+
+services:
+  ### Servicio de Backend ###
+  backend:
+    container_name: tiptap-example-backend
+    build:
+      context: ./backend
+      target: ${TARGET:-debug}
+    develop:
+      watch:
+        - action: sync
+          path: ./backend
+          target: /app
+          ignore:
+            - backend/node_modules
+    ports:
+      - 1234:1234
+    networks:
+      - local_network
+
+  ### Servicio de Frontend ###
+  frontend:
+    container_name: tiptap-example-frontend
+    build:
+      context: ./frontend
+      target: ${TARGET:-debug}
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend
+          target: /app
+          ignore:
+            - frontend/node_modules
+    ports:
+      - 3000:3000
+    networks:
+      - local_network
+
+networks:
+  local_network:
+    driver: bridge

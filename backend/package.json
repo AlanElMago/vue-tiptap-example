@@ -1,0 +1,26 @@
+{
+  "name": "tiptap-example-backend",
+  "version": "1.0.0",
+  "description": "An example of a backend for Tiptap using Hocuspocus",
+  "private": true,
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "backend",
+    "tiptap",
+    "hocuspocus"
+  ],
+  "author": "Alan Franco",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "@hocuspocus/server": "^2.15.0"
+  }
+}

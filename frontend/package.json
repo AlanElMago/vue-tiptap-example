@@ -1,0 +1,42 @@
+{
+  "name": "tiptap-example-frontend",
+  "version": "0.1.0",
+  "description": "An example of a frontend for Tiptap using Vue",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build-dev": "vite build --mode development",
+    "build-prod": "vite build --mode production",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "vue",
+    "frontend",
+    "tiptap",
+    "hocuspocus"
+  ],
+  "author": "Alan Franco",
+  "license": "MIT",
+  "dependencies": {
+    "@hocuspocus/provider": "^2.15.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@tiptap/extension-collaboration": "^2.11.3",
+    "@tiptap/extension-document": "^2.11.3",
+    "@tiptap/extension-paragraph": "^2.11.3",
+    "@tiptap/extension-text": "^2.11.3",
+    "@tiptap/vue-3": "^2.11.3",
+    "pinia": "^2.3.1",
+    "tailwindcss": "^4.0.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "y-prosemirror": "^1.2.15",
+    "y-protocols": "^1.0.6",
+    "yjs": "^13.6.23"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^6.0.11",
+    "vite-plugin-vue-devtools": "^7.7.0"
+  }
+}
