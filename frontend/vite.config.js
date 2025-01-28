@@ -18,12 +18,12 @@ export default defineConfig(({ mode }) => {
     preview: {
       host: '0.0.0.0',
       port: 3000,
-      allowedHosts: env.ALLOWED_HOSTS,
+      allowedHosts: env.ALLOWED_HOSTS?.split(', ') || ['localhost'],
     },
     server: {
       host: '0.0.0.0',
       port: 3000,
-      allowedHosts: env.ALLOWED_HOSTS,
+      allowedHosts: env.ALLOWED_HOSTS?.split(', ') || ['localhost'],
     },
     resolve: {
       alias: {
