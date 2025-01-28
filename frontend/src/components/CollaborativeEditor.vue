@@ -9,6 +9,8 @@ import { EditorContent, useEditor } from '@tiptap/vue-3';
 import { onMounted } from 'vue';
 import * as Y from 'yjs';
 
+import config from '@/config/config';
+
 const doc = new Y.Doc();
 
 const editor = useEditor({
@@ -24,7 +26,7 @@ const editor = useEditor({
 
 onMounted(() => {
   const provider = new TiptapCollabProvider({
-    baseUrl: 'ws://127.0.0.1:1234',
+    baseUrl: `ws://${config.HOCUSPOCUS_WS_IP}:1234`,
     name: 'example-document',
     document: doc,
     onSynced() {

@@ -1,7 +1,7 @@
 name: vue-tiptap-example
 
 services:
-  ### Servicio de Backend ###
+  ### Backend Service ###
   backend:
     container_name: tiptap-example-backend
     build:
@@ -19,7 +19,7 @@ services:
     networks:
       - local_network
 
-  ### Servicio de Frontend ###
+  ### Frontend Service ###
   frontend:
     container_name: tiptap-example-frontend
     build:
@@ -32,6 +32,8 @@ services:
           target: /app
           ignore:
             - frontend/node_modules
+    environment:
+      - VITE_HOCUSPOCUS_WS_IP=${HOCUSPOCUS_WS_IP:-127.0.0.1}
     ports:
       - 3000:3000
     networks:
