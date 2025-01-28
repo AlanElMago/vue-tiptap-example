@@ -33,7 +33,8 @@ services:
           ignore:
             - frontend/node_modules
     environment:
-      - VITE_HOCUSPOCUS_WS_IP=${HOCUSPOCUS_WS_IP:-127.0.0.1}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost}
+      VITE_HOCUSPOCUS_WS_IP: ${HOCUSPOCUS_WS_IP:-127.0.0.1}
     ports:
       - 3000:3000
     networks:
