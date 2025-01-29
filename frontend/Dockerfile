@@ -11,7 +11,7 @@ FROM base AS debug
 ENV NODE_ENV=development
 CMD ["npm", "run", "dev"]
 
-FROM base AS stage
-ENV NODE_ENV=staging
-RUN npm run build-stage
+FROM base AS dev
+ENV NODE_ENV=development
+RUN npm run build-dev
 CMD ["npm", "run", "preview"]
