@@ -11,6 +11,6 @@ FROM base AS debug
 ENV NODE_ENV=development
 CMD ["npm", "run", "dev"]
 
-FROM base AS prod
-ENV NODE_ENV=production
+FROM base AS stage
+ENV NODE_ENV=staging
 CMD ["npm", "run", "start"]
