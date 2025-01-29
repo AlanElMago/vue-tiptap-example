@@ -1,5 +1,5 @@
 const defaults = {
-  HOCUSPOCUS_WS_IP: '127.0.0.1',
+  HOCUSPOCUS_WS_BASE_URL: 'ws://localhost:1234',
 };
 
 export default defaults;

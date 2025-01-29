@@ -34,7 +34,7 @@ services:
             - frontend/node_modules
     environment:
       ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost}
-      VITE_HOCUSPOCUS_WS_IP: ${HOCUSPOCUS_WS_IP:-127.0.0.1}
+      VITE_HOCUSPOCUS_WS_BASE_URL: ${HOCUSPOCUS_WS_BASE_URL:-ws://localhost:1234}
     ports:
       - 3000:3000
     networks:

@@ -26,7 +26,7 @@ const editor = useEditor({
 
 onMounted(() => {
   const provider = new TiptapCollabProvider({
-    baseUrl: `ws://${config.HOCUSPOCUS_WS_IP}:1234`,
+    baseUrl: config.HOCUSPOCUS_WS_BASE_URL,
     name: 'example-document',
     document: doc,
     onSynced() {
