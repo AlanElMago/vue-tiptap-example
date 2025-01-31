@@ -1,6 +1,21 @@
 name: vue-tiptap-example
 
 services:
+  ### Keycloak Service ###
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.1.0
+    container_name: tiptap-example-keycloak
+    command: ["start-dev", "--import-realm"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KC_BOOTSTRAP_ADMIN_USERNAME:-admin}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KC_BOOTSTRAP_ADMIN_PASSWORD:-admin}
+    ports:
+      - 8080:8080
+    networks:
+      - local_network
+    volumes:
+      - "./${KC_IMPORT_FILE:-default-realm.json}:/opt/keycloak/data/import/${KC_IMPORT_FILE:-default-realm.json}"
+
   ### Backend Service ###
   backend:
     container_name: tiptap-example-backend
@@ -35,6 +50,7 @@ services:
     environment:
       ALLOWED_HOSTS: ${ALLOWED_HOSTS:-localhost}
       VITE_HOCUSPOCUS_WS_BASE_URL: ${HOCUSPOCUS_WS_BASE_URL:-ws://localhost:1234}
+      VITE_KC_URL: ${KC_URL:-http://localhost:8080}
     ports:
       - 3000:3000
     networks:

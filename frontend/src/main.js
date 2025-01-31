@@ -1,14 +1,23 @@
 import './main.css';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import VueKeycloak from '@dsb-norge/vue-keycloak-js';
+import App from './App.vue';
+import router from './router';
+import vueKeycloakConfig from './config/vueKeycloakConfig';
 
-import App from './App.vue'
-import router from './router'
+const app = createApp(App);
 
-const app = createApp(App)
+app.use(VueKeycloak, {
+  config: vueKeycloakConfig,
+  init: { onLoad: 'login-required' },
+  onReady: (keycloak) => {
+    app.provide('keycloak', keycloak);
 
-app.use(createPinia())
-app.use(router)
+    app.use(createPinia());
+    app.use(router);
 
-app.mount('#app')
+    app.mount('#app');
+  },
+});
