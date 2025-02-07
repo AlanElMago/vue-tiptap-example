@@ -1,17 +1,20 @@
 <script setup>
 import { TiptapCollabProvider } from '@hocuspocus/provider';
+import Bold from '@tiptap/extension-bold';
 import Collaboration from '@tiptap/extension-collaboration';
 import Document from '@tiptap/extension-document';
+import Heading from '@tiptap/extension-heading';
+import Italic from '@tiptap/extension-italic';
 import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
+import Underline from '@tiptap/extension-underline';
 import { EditorContent, useEditor } from '@tiptap/vue-3';
-
-import { inject, ref } from 'vue';
 import * as Y from 'yjs';
 
 import config from '@/config/config';
+import ConnectedUsers from './ConnectedUsers.vue';
+import EditorButtons from './EditorButtons.vue';
 
-const keycloak = inject('keycloak');
 const doc = new Y.Doc();
 const provider = new TiptapCollabProvider({
   baseUrl: config.HOCUSPOCUS_WS_BASE_URL,
@@ -19,53 +22,54 @@ const provider = new TiptapCollabProvider({
   document: doc,
 });
 
-const connectedUsers = ref([keycloak.tokenParsed.name]);
-
 const editor = useEditor({
   extensions: [
+    Bold,
     Document,
+    Heading,
+    Italic,
     Paragraph,
     Text,
+    Underline,
     Collaboration.configure({
       document: doc,
     }),
   ],
 });
-
-provider.setAwarenessField('user', {
-  name: keycloak.tokenParsed.name,
-});
-
-provider.on('awarenessChange', ({ states }) => {
-  console.log(states);
-  connectedUsers.value = [];
-  states.forEach(state => connectedUsers.value.push(state.user.name));    
-});
 </script>
 
 <template>
-  <EditorContent id="editor" :editor="editor" />
-  <hr />
-  <div id="connected-users-container">
-    <h3>Connected Users</h3>
-    <li v-for="user in connectedUsers">
-      {{ user }}
-    </li>
+  <div v-if="editor" class="container">
+    <EditorButtons class="container p-2 space-x-2" :editor />
+    <EditorContent class="container m-2 p-2 border-1 rounded-md" :editor />
+    <ConnectedUsers class="m-2" :provider />
   </div>
 </template>
 
-<style scoped>
-@reference '../main.css';
+<style>
+@reference "../main.css";
+
+h1 {
+  @apply text-3xl font-bold
+}
+
+h2 {
+  @apply text-2xl font-semibold
+}
 
 h3 {
-  @apply text-xl
+  @apply text-xl font-semibold
 }
 
-#connected-users-container {
-  @apply p-2
+h4 {
+  @apply text-lg font-medium
 }
 
-#editor {
-  @apply p-2
+h5 {
+  @apply text-base font-medium
+}
+
+h6 {
+  @apply text-base italic
 }
 </style>
