@@ -15,11 +15,9 @@ import config from '@/config/config';
 import ConnectedUsers from './ConnectedUsers.vue';
 import EditorButtons from './EditorButtons.vue';
 
-const doc = new Y.Doc();
 const provider = new TiptapCollabProvider({
   baseUrl: config.HOCUSPOCUS_WS_BASE_URL,
-  name: 'example-document',
-  document: doc,
+  name: 'example.ydoc',
 });
 
 const editor = useEditor({
@@ -32,7 +30,7 @@ const editor = useEditor({
     Text,
     Underline,
     Collaboration.configure({
-      document: doc,
+      document: provider.document
     }),
   ],
 });
