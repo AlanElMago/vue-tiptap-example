@@ -1,11 +1,11 @@
 <script setup>
-import CollaborativeEditor from '@/components/CollaborativeEditor.vue';
+import FileTable from '@/components/FileTable.vue';
 import Navbar from '@/components/Navbar.vue';
 </script>
 
 <template>
   <Navbar />
-  <CollaborativeEditor />
+  <FileTable />
 </template>
 
 <style scoped>

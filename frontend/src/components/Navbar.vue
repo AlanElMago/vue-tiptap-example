@@ -5,9 +5,12 @@ const keycloak = inject('keycloak');
 </script>
 
 <template>
-  <div id="navbar">
-    <h1>Tiptap Example</h1>
-    <div id="button-container">
+  <div class="flex p-2 bg-green-700">
+    <div class="flex flex-1 text-left items-center">
+      <RouterLink to="/" class="text-gray-200 text-xl p-1">Home</RouterLink>
+    </div>
+    <h1 class="text-gray-200 text-2xl font-bold">Tiptap Example</h1>
+    <div class="flex-1 text-right">
       <button @click="keycloak.logout()">Logout</button>
     </div>
   </div>
@@ -22,17 +25,5 @@ button {
 
 button:hover {
   @apply cursor-pointer;
-}
-
-h1 {
-  @apply text-gray-200 text-2xl font-bold;
-}
-
-#button-container {
-  @apply flex-1 text-right;
-}
-
-#navbar {
-  @apply flex p-2 bg-green-700;
 }
 </style>

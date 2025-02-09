@@ -9,15 +9,17 @@ import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
 import Underline from '@tiptap/extension-underline';
 import { EditorContent, useEditor } from '@tiptap/vue-3';
-import * as Y from 'yjs';
 
 import config from '@/config/config';
 import ConnectedUsers from './ConnectedUsers.vue';
 import EditorButtons from './EditorButtons.vue';
+import { onBeforeUnmount } from 'vue';
+
+const { filename } = defineProps(['filename']);
 
 const provider = new TiptapCollabProvider({
   baseUrl: config.HOCUSPOCUS_WS_BASE_URL,
-  name: 'example.ydoc',
+  name: filename,
 });
 
 const editor = useEditor({
@@ -34,6 +36,8 @@ const editor = useEditor({
     }),
   ],
 });
+
+onBeforeUnmount(() => provider.destroy());
 </script>
 
 <template>
